@@ -1,0 +1,33 @@
+<ul id="comment-<%= comment._id %>">
+    <p>
+        <% if (locals.user && locals.user.id == comment.user.id){ %>
+            <div class="dropdown">
+        
+            <a class="float-left" aria-expanded="false"  id="more_options<%=comment.id%>" data-toggle="dropdown" aria-haspopup="true"
+                href="/comments/destroy/<%= comment.id %>"> X</a>
+        </div>
+        <% } %>
+
+        <b><%=comment.user.name%></b>
+        <p>
+            <%=comment.content%>
+        </p>
+        <div class="align-middle action-buttons">
+            <!-- like button on post -->
+            <%if(locals.user){%>
+            <a href="/likes/toggle/?id=<%=comment._id%>&type=Comment" id="like-<%=comment._id%>" class="like-buttons"
+                data-likes="<%=comment.likes.length%>" data-toggle="false"><i class="far fa-heart"></i>
+                <span><%=comment.likes.length%></span> </a> &nbsp
+            <%}else{%>
+            <%=comment.likes.length%> Likes
+            <%}%>
+            <!-- comment button on post -->
+            <a data-toggle="collapse" href="<%=comment._id%>" role="button" aria-expanded="false"
+            aria-controls="<%=comment._id%>"><i class="far fa-comment"></i></a>&nbsp
+            <!-- send button on post -->
+            <a href="/comments/create"><i class="fas fa-paper-plane"></i></a>
+        </div>
+    
+        <hr>
+    </div>
+</ul>

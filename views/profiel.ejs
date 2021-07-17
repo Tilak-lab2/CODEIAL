@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title  %> </title>
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+<body>
+   
+    <section class="col-sm-8 offset-sm-2 section-two pt-5 pb-5 animate__animated animate__jello">
+        <h1 class="text-center font-weight-bold sign-up-logo pb-2">Profile</h1>
+        <div class="row align-items-center-pop">
+            <div class="col-sm-8 offset-sm-2">
+                          <div class="container" > 
+                              
+                            <div class="c1">
+                                <img class="profile_image" src="<%= user.avatar  %> " id="myModel"  alt="<%= user.name  %> " >
+                                </div>
+                            
+                          </div>
+
+
+             
+                    <!-- if user matches then show the form -->
+                    
+                    <% if(locals.user){ %> 
+                   <div class="lol">
+                    <form action="/users/update/<%=user._id%>" enctype="multipart/form-data" method="POST">
+                    
+                    
+                        <input type="file" name="avatar" placeholder="Profile Picture" >
+                        
+                        <input type="submit"  value="Update">
+                        <% } %> 
+                        
+                    </form>
+                    </div>
+                    
+            
+
+
+         
+
+
+             </div>
+             </div>
+             </section>   
+
+  
+</body>
+</html>
